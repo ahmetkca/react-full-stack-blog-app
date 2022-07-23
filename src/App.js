@@ -6,9 +6,10 @@ import {
 } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import ArticlesList from './pages/ArticlesList';
+import ArticlesListPage from './pages/ArticlesListPage';
 import ArticlePage from './pages/ArticlePage';
 import NavBar from './NavBar';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} exact />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/articles" element={<ArticlesList />} />
+          <Route path="/articles" element={<ArticlesListPage />} />
           <Route path="/articles/:articleName" element={<ArticlePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </BrowserRouter>
