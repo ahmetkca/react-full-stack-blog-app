@@ -7,7 +7,7 @@ import {
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ArticlesList from './pages/ArticlesList';
-import Article from './pages/Article';
+import ArticlePage from './pages/ArticlePage';
 import NavBar from './NavBar';
 
 function App() {
@@ -15,11 +15,11 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <Routes>        
+        <Routes>
           <Route path="/" element={<HomePage />} exact />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/articles" element={<ArticlesList />} />
-          <Route path="/articles/:id" element={<Article />} />
+          <Route path="/articles/:articleName" element={<ArticlePage />} />
         </Routes>
       </div>
     </BrowserRouter>
