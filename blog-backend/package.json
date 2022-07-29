@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docker": "nodemon --exec babel-node ./src/server.js",
     "start": "npx nodemon --exec npx babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,11 +13,15 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongodb": "^4.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
     "@babel/node": "^7.18.9",
-    "@babel/preset-env": "^7.18.9"
+    "@babel/preset-env": "^7.18.9",
+    "babel-node": "^0.0.1-security",
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
   }
 }

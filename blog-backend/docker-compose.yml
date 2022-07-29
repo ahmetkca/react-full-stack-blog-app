@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./docker-mongodb/mongodb_data_container:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=citiz1x
+      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+
