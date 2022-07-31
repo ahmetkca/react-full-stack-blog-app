@@ -16,13 +16,15 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage />} exact />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/articles" element={<ArticlesListPage />} />
-          <Route path="/articles/:articleName" element={<ArticlePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <div id='page-body'>
+          <Routes>
+            <Route path="/" element={<HomePage />} exact />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/articles" element={<ArticlesListPage />} />
+            <Route path="/articles/:articleName" element={<ArticlePage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );
