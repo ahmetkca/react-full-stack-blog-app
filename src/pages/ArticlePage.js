@@ -11,6 +11,7 @@ import NotFoundPage from './NotFoundPage';
 
 
 import articlesContent from './articles-data.js';
+import AddCommentForm from '../components/AddCommentForm';
 
 const ArticlePage = () => {
   const { articleName } = useParams();
@@ -41,6 +42,7 @@ const ArticlePage = () => {
       <h1>{articleInfo.name}</h1>
       <UpvotesSection articleName={articleName} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo} />
       <CommentsList comments={articleInfo.comments} />
+      <AddCommentForm articleName={articleName} setArticleInfo={setArticleInfo} />
       <h3>Similar Articles</h3>
       <ArticlesList articles={articlesContent.filter(article => article.name !== articleName)} />
     </div>
