@@ -16,7 +16,7 @@ import AddCommentForm from '../components/AddCommentForm';
 const ArticlePage = () => {
   const { articleName } = useParams();
 
-  const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
+  const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [], content: [] });
 
   useEffect(() => {
     const blogApiUrl = `/api/articles/${articleName}`;
@@ -29,6 +29,7 @@ const ArticlePage = () => {
           }
         })
       const body = await result.json();
+      console.log(body);
       setArticleInfo(body);
     })()
   }, [articleName]);
@@ -41,6 +42,9 @@ const ArticlePage = () => {
     <div>
       <h1>{articleInfo.name}</h1>
       <UpvotesSection articleName={articleName} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo} />
+      {articleInfo.content.map((paragraph, index) => (
+        <p key={index}>{paragraph}</p>
+      ))}
       <CommentsList comments={articleInfo.comments} />
       <AddCommentForm articleName={articleName} setArticleInfo={setArticleInfo} />
       <h3>Similar Articles</h3>
