@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path';
 
 import { MongoClient } from 'mongodb';
 
@@ -8,6 +9,8 @@ const MONGO_ROOT_PASSWORD = "S3cret"
 const MONGO_CONNSTR = `mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@localhost:27017`;
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '/build')));
 
 app.use(bodyParser.json());
 
@@ -65,7 +68,7 @@ app.post("/api/articles/:articleName/upvote", async (req, res) => {
     const filter = { name: articleName };
     const updateDoc = { $inc: { upvotes: 1 } };
     const updateResult = await db.collection('articles').updateOne(filter, updateDoc);
-    console.log(`${updateResult.matchedCount} document(s) matched the filter, updated ${updateResult.modifiedCount} document(s)`);
+    console.log(`Upvote: ${updateResult.matchedCount} document(s) matched the filter, updated ${updateResult.modifiedCount} document(s)`);
     if (updateResult.matchedCount === 0) return res.status(404).json({ message: `No article with name ${articleName} found` });
 
     const updatedArticle = await db.collection('articles').findOne({ name: articleName });
